@@ -1,0 +1,73 @@
+DELIMITER $$
+
+CREATE TRIGGER after_user_entry
+AFTER INSERT
+ON users FOR EACH ROW
+BEGIN
+   
+        INSERT INTO users_archive(user_Id, firstname,lastname,email,reg_date,action,action_time)
+        VALUES(NEW.id, NEW.firstname, NEW.lastname, NEW.email, NEW.reg_date,"INSERT",NOW());
+   
+END$$
+
+DELIMITER ;
+
+#################################################
+
+DELIMITER $$
+
+CREATE TRIGGER before_user_entry
+BEFORE UPDATE
+ON users FOR EACH ROW
+BEGIN
+   
+        INSERT INTO users_archive(user_Id, firstname,lastname,email,reg_date,action,action_time)
+        VALUES(OLD.id, OLD.firstname, OLD.lastname, OLD.email, OLD.reg_date,"UPDATE",NOW());
+   
+END$$
+
+DELIMITER ;
+
+#################################################
+
+DELIMITER $$
+
+CREATE TRIGGER befor_user_delete
+BEFORE DELETE
+ON users FOR EACH ROW
+BEGIN
+   
+        INSERT INTO users_archive(user_Id, firstname,lastname,email,reg_date,action,action_time)
+        VALUES(OLD.id, OLD.firstname, OLD.lastname, OLD.email, OLD.reg_date,"DELETE",NOW());
+   
+END$$
+
+DELIMITER ;
+
+
+
+#################################
+
+
+
+view create
+joining quary
+
+
+SELECT employeeNumber, lastName, firstName,email, city,phone FROM employees , offices WHERE 
+offices.officeCode = employees.officeCode;
+
+
+CREATE VIEW employee_contact_view AS 
+SELECT employeeNumber, CONCAT(firstName,' ',lastName) AS name,email, city,phone FROM employees , offices WHERE 
+offices.officeCode = employees.officeCode;
+
+
+
+
+CREATE VIEW order_all_view AS 
+SELECT orders.orderNumber, orderDate, status, comments , productCode, quantityOrdered, priceEach  
+FROM oders, orderdetails WHERE 
+orders.orderNumber = orderdetails.orderNumber;
+
+

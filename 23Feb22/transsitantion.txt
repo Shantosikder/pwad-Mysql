@@ -1,0 +1,132 @@
+
+Setting environment for using XAMPP for Windows.
+B-13@LAB3-COM02 e:\xampp for santo
+# mysql -h localhost -u root ip
+ERROR 1049 (42000): Unknown database 'ip'
+
+B-13@LAB3-COM02 e:\xampp for santo
+# mysql -h localhost -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 339
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use pwad50-php-crud
+Database changed
+MariaDB [pwad50-php-crud]> START TRANSACTION;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [pwad50-php-crud]> UPDATE participants SET cash=cash-12.99 WHERE id=1;
+Query OK, 1 row affected (0.090 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pwad50-php-crud]> UPDATE participants SET cash=cash+12.99 WHERE id=2;
+Query OK, 1 row affected (0.000 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pwad50-php-crud]> UPDATE trunks SET owner=1 WHERE name="Abacus" AND owner=2;
+Query OK, 1 row affected (0.000 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pwad50-php-crud]> SELECT * FROM participants;
++----+-------+-------------------+--------+
+| id | name  | email             | cash   |
++----+-------+-------------------+--------+
+|  1 | Jason | jason@example.com |  87.01 |
+|  2 | Jon   | jon@example.com   | 162.99 |
++----+-------+-------------------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [pwad50-php-crud]> ROLLBACK;
+Query OK, 0 rows affected (0.048 sec)
+
+MariaDB [pwad50-php-crud]> SELECT * FROM participants;
++----+-------+-------------------+--------+
+| id | name  | email             | cash   |
++----+-------+-------------------+--------+
+|  1 | Jason | jason@example.com | 100.00 |
+|  2 | Jon   | jon@example.com   | 150.00 |
++----+-------+-------------------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [pwad50-php-crud]> START TRANSACTION;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [pwad50-php-crud]> UPDATE participants SET cash=cash-12.99 WHERE id=1;
+Query OK, 1 row affected (0.001 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pwad50-php-crud]> UPDATE participants SET cash=cash+12.99 WHERE id=2;
+Query OK, 1 row affected (0.000 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pwad50-php-crud]> UPDATE trunks SET owner=1 WHERE name="Abacus" AND owner=2;
+Query OK, 1 row affected (0.000 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pwad50-php-crud]> commit;
+Query OK, 0 rows affected (0.049 sec)
+
+MariaDB [pwad50-php-crud]> SELECT * FROM participants;
++----+-------+-------------------+--------+
+| id | name  | email             | cash   |
++----+-------+-------------------+--------+
+|  1 | Jason | jason@example.com |  87.01 |
+|  2 | Jon   | jon@example.com   | 162.99 |
++----+-------+-------------------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [pwad50-php-crud]>
+
+
+
+
+import & transition 
+
+
+
+CREATE TABLE discounts (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    expired_date DATE NOT NULL,
+    amount DECIMAL(10 , 2 ) NULL,
+    PRIMARY KEY (id)
+);
+
+
+
+LOAD DATA INFILE 'd:/mydata.csv' 
+INTO TABLE discounts 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+
+###########################################Expot##############################
+
+SELECT id,firstname,lastname,email,phone FROM employees INTO OUTFILE 'd:/employees.csv' FILELDS ENCLOSED BY '' TERMINATED BY ',' ESCAPED BY '"' LINES TERMINATED BY '\r\n'; 
+
+
+###############################Export database to a sql file###############
+
+
+mysqldump -h localhost -u root -p pwad50 > d:\pwad50backup.sql
+
+
+
+###############################Import database to a sql file###############
+
+
+mysql -h localhost -u root -p pwad50new < d:\pwad50backup.sql
+
+
+
+
+
+

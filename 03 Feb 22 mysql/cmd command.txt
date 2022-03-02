@@ -1,0 +1,66 @@
+Microsoft Windows [Version 10.0.19042.1348]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\xamp\mysql\bin>show databases;
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\xamp\mysql\bin> localhost
+'localhost' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\xamp\mysql\bin> create databases;
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\xamp\mysql\bin> create database pwad50;
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\xamp\mysql\bin>localhost $> mysql -u root -p
+'localhost' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\xamp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 76
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hometest           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| pwad50             |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use pwad50;
+Database changed
+MariaDB [pwad50]> show tables;
++------------------+
+| Tables_in_pwad50 |
++------------------+
+| customers        |
+| employees        |
+| offices          |
+| orderdetails     |
+| orders           |
+| payments         |
+| productlines     |
+| products         |
++------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [pwad50]>

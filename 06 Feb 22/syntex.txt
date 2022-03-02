@@ -1,0 +1,21 @@
+DELETE FROM employees WHERE employeeNumber = '1056'; 
+
+
+UPDATE products SET buyPrice = '100' WHERE productCode = 'S10_1678';
+
+
+SELECT * FROM `products`;
+
+
+INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+
+
+SELECT lastName, firstName, email, jobTitle, city, state,country FROM employees, offices WHERE offices.officeCode = employees.officeCode; 
+
+SELECT orderNumber, orderDate, status, customerName, city, country FROM orders, customers WHERE orders.customerNumber = customers.customerNumber;
+
+
+SELECT customers.customerNumber, orderNumber, orderDate, paymentDate, amount, status, customerName, city, country FROM customers, orders, payments WHERE customers.customerNumber = orders.customerNumber AND payments.customerNumber;
+
+
+

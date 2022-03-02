@@ -1,0 +1,44 @@
+Table create
+
+DROP TABLE IF EXISTS members;
+
+CREATE TABLE members (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255),
+    birthDate DATE,
+    PRIMARY KEY (id)
+);
+
+
+
+Trigger table create
+
+DROP TABLE IF EXISTS trigger_members;
+
+CREATE TABLE trigger_members (
+    id INT AUTO_INCREMENT,
+    memberId INT,
+    name VARCHAR(255) NOT NULL,
+    adminId INT,
+    PRIMARY KEY (id)
+);
+
+
+
+Trigger Create
+
+DELIMITER $$
+
+CREATE TRIGGER after_members_insert
+AFTER INSERT
+ON members FOR EACH ROW
+BEGIN
+        INSERT INTO trigger_members(memberId, name, adminId , action)
+        VALUES(new.id,new.name,5,"INSERT");
+END$$
+
+DELIMITER ;
+
+
+

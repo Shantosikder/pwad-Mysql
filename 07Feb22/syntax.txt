@@ -1,0 +1,15 @@
+SELECT COUNT(name) FROM`officeemploees`;
+
+SELECT COUNT(DISTINCT salary) AS COUNT FROM`officeemploees`;
+
+SELECT MAX(salary) AS LargestPrice FROM officeemploees;
+
+SELECT MIN(salary) AS LargestPrice FROM officeemploees;
+
+SELECT MIN(salary) AS LargestPrice, name,age,gender FROM officeemploees;
+
+SELECT SUM(salary) AS Total FROM officeemploees;
+
+SELECT AVG(salary) AS Avarage FROM officeemploees;
+
+UPDATE officeemploees SET age = "40" WHERE name = "nabil";

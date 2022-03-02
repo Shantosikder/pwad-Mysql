@@ -1,0 +1,20 @@
+Data view join query
+
+
+CREATE VIEW employee_contact_view AS
+SELECT employeeNumber,CONCAT(lastName,firstName) AS fullname,jobTitle, city, country, phone FROM employees, offices WHERE offices.officeCode = employees.officeCode;
+
+
+
+CREATE VIEW orderlist AS
+SELECT orderDate, requiredDate, status FROM orders, orderdetails WHERE orders.orderNumber = orderdetails.orderNumber;
+
+
+
+CREATE VIEW employeeContact AS 
+SELECT employeeNumber,firstName,lastName,email FROM employee,offices WHERE offices.officeCode = employees.officeCode;
+
+
+
+CREATE VIEW paymentlist AS
+SELECT orderNumber,orderDate,shippedDate status,paymentDate,amount FROM orders,payments WHERE orders.customerNumber = payments.customerNUmber;

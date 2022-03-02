@@ -1,0 +1,33 @@
+SELECT * FROM `idbstudentinfo` WHERE fristname LIKE "s%" OR fristname LIKE "n%";
+
+SELECT * FROM `idbstudentinfo` WHERE fristname NOT LIKE "s%";
+
+
+SELECT * FROM `idbstudentinfo` WHERE BINARY fristname LIKE "s%"; //Case sencetive amra je rokom value dibo amon asbe.
+
+SELECT * FROM `idbstudentinfo` WHERE fristname REGEXP 'il'; //amra je value dibo oigula je word ar moddhe thakbe oi value gula ai asbe.
+
+SELECT * FROM `idbstudentinfo` WHERE fristname REGEXP '^sh'; //start hobe sh diye
+
+
+SELECT * FROM `idbstudentinfo` WHERE fristname REGEXP 'shanto|Amzad|Nabil';
+
+SELECT * FROM `idbstudentinfo` ORDER BY fristname; //accending order 
+
+SELECT * FROM `idbstudentinfo` ORDER BY fristname DESC;
+
+SELECT `fristname` FROM `idbstudentinfo`;
+
+SELECT `email` FROM `idbstudentinfo` ORDER BY email;
+
+SELECT * FROM `idbstudentinfo` WHERE `phone` IS NULL;
+
+SELECT * FROM `idbstudentinfo` WHERE `phone` IS NOT NULL;
+
+SELECT * FROM `idbstudentinfo` LIMIT 3;
+
+SELECT * FROM `idbstudentinfo` WHERE fristname = 'shanto' LIMIT 3;
+
+SELECT * FROM `idbstudentinfo` LIMIT 3,3;
+
+SELECT * FROM `idbstudentinfo` LIMIT 0,2;

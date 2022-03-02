@@ -1,0 +1,32 @@
+##################################################################
+#################Import Data from Outside file####################
+##################################################################
+LOAD DATA LOCAL INFILE  'h:/mydata.csv'
+INTO TABLE discounts
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+##################################################################
+#########Export Data from a table to a Outside file###############
+##################################################################
+SELECT
+    id, firstname, lastname, email, phone
+FROM
+    employees
+INTO OUTFILE 'h:/employees.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ','
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
+
+##################################################################
+#############Export database to a SQL file########################
+##################################################################
+mysqldump -h localhost -u root -p pwad50 > h:\pwad50_bk.sql
+
+##################################################################
+#############Import mysql database to a blank database############
+##################################################################
+mysql -h localhost -u root -p pwad50_new < h:\pwad50_bk.sql

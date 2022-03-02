@@ -1,0 +1,8 @@
+DB: pwad50-php-crud
+
+student 
+	id (int auto increment),
+	name (string),
+	email (string),
+	phone (string),
+	gender enum(male,female);
